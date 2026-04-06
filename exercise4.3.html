@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo form cơ bản kết hợp với CSS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* reset css mặc định */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* css trang web */
+    input {
+      width: 300px;
+    }
+    textarea {
+      width: 300px;
+    }
+    button {
+      width: 300px;
+      background-color: green;
+      color: white;
+      border-radius: 4px; /* bo tròn 4 góc */
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Liên hệ với chúng tôi</h1>
+    <form>
+      <div>
+        <label for="username">Họ và tên:</label> <br>
+        <input type="text">
+      </div>
+      <div>
+        <label for="email">Email:</label> <br>
+        <input type="text">
+      </div>
+      <div>
+        <label for="tin nhắn">Tin nhắn:</label> <br>
+        <textarea rows="5" cols="50" name="Tin nhắn:" id="Tin nhắn:"></textarea>
+      </div>
+      <div>
+        <button>Gửi</button>
+      </div>
+    </form>
+  </body>
+</html>

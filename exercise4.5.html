@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Nhúng CSS vào trang HTML</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* reset css mặc định */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* css trang web */
+    h1 {
+      color: orange;
+    }
+    .p1 {
+      color: blue;
+    }
+    .p2 {
+      color: red;
+    }
+    .tip {
+      background-color: rgba(182, 182, 119, 0.8);
+      padding: 10px;
+      border-left: 5px solid orange;
+      margin-top: 10px;
+    }
+    .text-yellow {
+      color: yellow;
+    }
+    body {
+      margin: 20px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>What is CSS?</h1>
+    <p class="p1"><b>Cascading Style Sheets (CSS)</b> is used to format the layout of a webpage.</p>
+    <p class="p2">With CSS, you can control the color, font, the size of text, the spacing between elements, 
+      how elements are positioned and laid out, what background images or background colors are to be used, 
+      different displays for different devices and screen sizes, and much more! </p>
+    <div class="tip">
+      <span class="text-yellow">Tip:</span> The word <span class="text-yellow">cascading</span> means that a style applied toa parent elements will also apply toall children 
+      elements within the parent. So, if you set the color of the body text to "blue", all headings, paragrahs,
+       and other text elements within the body will also get the same color (unless you specify something else)!
+    </div>
+  </body>
+</html>
