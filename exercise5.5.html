@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập về CSS properties cơ bản</title>
+    <style>
+        /* RESET & NỀN */
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f5f5f5; 
+            padding: 20px; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: white; 
+            margin-top: 15px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        th, td { 
+            padding: 12px; 
+            border-bottom: 1px solid #ddd; 
+            vertical-align: middle; 
+        }
+        th { 
+            text-align: left; 
+            color: gray; 
+            font-size: 14px; 
+        }
+        tr:hover { 
+            background: #e3f2fd; 
+        }
+        select { 
+            padding: 6px 10px; 
+            margin-right: 5px; 
+            border-radius: 4px; 
+            border: 1px solid #ccc; 
+            cursor: pointer; 
+        }
+        .icon { 
+            position: relative; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-size: 18px; 
+        }
+        .preview {
+            display: none; 
+            position: absolute; 
+            top: -110px; 
+            left: 30px;
+            width: 160px; 
+            height: 100px; 
+            background: white;
+            border: 1px solid #ccc; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2); 
+            z-index: 10;
+        }
+        .preview img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        .icon:hover .preview { 
+            display: block; 
+        }
+
+        .popup, .user-popup {
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(0,0,0,0.7); 
+            display: none;
+            justify-content: center; 
+            align-items: center; 
+            z-index: 100;
+        }
+        .popup:target, .user-popup:target { 
+            display: flex; 
+        }
+        .close { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            cursor: default; }
+
+        /* ===== CẤU TRÚC 7 KIỂU HIỆU ỨNG ===== */
+        .stage {
+            position: relative; 
+            width: 300px; 
+            height: 200px;
+            background: white; 
+            border-radius: 12px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            overflow: hidden; /* Cần thiết để hiệu ứng grow/shrink không tràn */
+        }
+        .box-gray {
+            width: 120px; 
+            height: 80px; 
+            background: #bbb;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            color: black; 
+            font-weight: bold; 
+            font-size: 14px;
+            transition: all 0.4s ease; 
+            cursor: pointer; 
+            z-index: 2;
+        }
+
+        /* 1. Fade: Nền xám trở nên đậm */
+        .fade:hover { 
+            background: #333; 
+            color: white; 
+        }
+
+        /* 2. Change-color: Đổi sang xanh */
+        .change-color:hover { 
+            background: blue; 
+            color: white; }
+
+        /* 3. Grow: Phóng to ra nền trắng */
+        .grow:hover { 
+            transform: scale(2.5); 
+        }
+
+        /* 4. Shrink: Phóng vừa (giảm nhẹ so với grow hoặc thu về tùy ý, ở đây mình làm phóng vừa) */
+        .shrink:hover { 
+            transform: scale(1.5); 
+        }
+
+        /* 5. Rotate: Xoay 45 độ */
+        .rotate:hover { 
+            transform: rotate(45deg); 
+        }
+
+        /* 6. Square-to-circle: Hình vuông sang hình tròn */
+        .square-to-circle:hover { 
+            border-radius: 50%; 
+        }
+
+        /* 7. Insert-border: Viền xanh từ nền xám phóng to ra */
+        .insert-border { 
+            border: 0px solid blue; 
+        }
+        .insert-border:hover { 
+            transform: scale(1.3); 
+            border: 4px solid blue;
+            background: #ddd; 
+        }
+
+        /* ===== CHỦ SỞ HỮU & USER CARD ===== */
+        .owner { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .avatar { 
+            position: relative; 
+            background: #e91e63; 
+            color: white; 
+            width: 28px; 
+            height: 28px; 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            text-decoration: none; 
+            font-size: 13px; 
+            font-weight: bold; 
+        }
+        .tooltip { 
+            display: none; 
+            position: absolute; 
+            top: -35px; 
+            background: black; 
+            color: white; 
+            padding: 5px 8px; 
+            font-size: 11px; 
+            border-radius: 4px; 
+            white-space: nowrap; 
+        }
+        .avatar:hover .tooltip { 
+            display: block; 
+        }
+        .people { 
+            position: relative; 
+            cursor: pointer; 
+            margin-left: 8px; 
+            font-size: 14px; 
+        }
+        .share { 
+            display: none; 
+            margin-left: 5px; 
+            color: blue; 
+            font-size: 12px; 
+            font-weight: bold; 
+        }
+        .people:hover .share { 
+            display: inline; 
+        }
+        .card { 
+            background: white; 
+            padding: 25px; 
+            width: 280px; 
+            border-radius: 15px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 101; 
+        }
+        .avatar-big { 
+            width: 70px; 
+            height: 70px; 
+            background: #e91e63; 
+            color: white; 
+            border-radius: 50%; 
+            line-height: 70px; 
+            font-size: 30px; 
+            margin: 0 auto 15px; 
+        }
+        .box { 
+            width: 140px; 
+            height: 40px;
+            background: #2196f3; 
+            color: white; 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            margin: 15px auto; 
+            transition: 0.3s; 
+            font-weight: bold; 
+        }
+        .box:hover { 
+            background: #1976d2; 
+            transform: scale(1.05); 
+        }
+        .actions { 
+            margin-top: 20px; 
+            display: flex; 
+            justify-content: space-around; 
+            font-size: 22px; 
+            border-top: 1px solid #eee; 
+            padding-top: 15px; 
+        }
+        .menu { 
+            text-align: center; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 18px; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Mini Components and Effects</h2>
+    
+    <form style="margin-bottom: 20px;">
+        <select><option>Loại</option><option>Hiệu ứng CSS</option></select>
+        <select><option>Người</option><option>support</option></select>
+        <select><option>Lần sửa đổi gần nhất</option></select>
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Tên ↑</th>
+                <th>Chủ sở hữu</th>
+                <th>Ngày sửa đổi</th>
+                <th>Kích cỡ tệp</th>
+                <th>Sắp xếp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="#img1" class="icon">🖼️</a> 01.fade <span class="people">👥<span class="share">Chia sẻ</span></span></td>
+                <td><div class="owner"><a href="#user1" class="avatar">S<div class="tooltip">support</div></a>support</div></td>
+                <td>15/8/2022</td><td>--</td><td class="menu">⋮</td>
+            </tr>
+            <tr>
+                <td><a href="#img2" class="icon">🖼️</a> 02.change-color <span class="people">👥<span class="share">Chia sẻ</span></span></td>
+                <td><div class="owner"><a href="#user1" class="avatar">S<div class="tooltip">support</div></a>support</div></td>
+                <td>15/8/2022</td><td>--</td><td class="menu">⋮</td>
+            </tr>
+            <tr>
+                <td><a href="#img3" class="icon">🖼️</a> 03.grow <span class="people">👥<span class="share">Chia sẻ</span></span></td>
+                <td><div class="owner"><a href="#user1" class="avatar">S<div class="tooltip">support</div></a>support</div></td>
+                <td>15/8/2022</td><td>--</td><td class="menu">⋮</td>
+            </tr>
+            <tr>
+                <td><a href="#img4" class="icon">🖼️</a> 04.shrink <span class="people">👥<span class="share">Chia sẻ</span></span></td>
+                <td><div class="owner"><a href="#user1" class="avatar">S<div class="tooltip">support</div></a>support</div></td>
+                <td>15/8/2022</td><td>--</td><td class="menu">⋮</td>
+            </tr>
+            <tr>
+                <td><a href="#img5" class="icon">🖼️</a> 05.rotate <span class="people">👥<span class="share">Chia sẻ</span></span></td>
+                <td><div class="owner"><a href="#user1" class="avatar">S<div class="tooltip">support</div></a>support</div></td>
+                <td>15/8/2022</td><td>--</td><td class="menu">⋮</td>
+            </tr>
+            <tr>
+                <td><a href="#img6" class="icon">🖼️</a> 06.sq-to-circle <span class="people">👥<span class="share">Chia sẻ</span></span></td>
+                <td><div class="owner"><a href="#user1" class="avatar">S<div class="tooltip">support</div></a>support</div></td>
+                <td>15/8/2022</td><td>--</td><td class="menu">⋮</td>
+            </tr>
+            <tr>
+                <td><a href="#img7" class="icon">🖼️</a> 07.insert-border <span class="people">👥<span class="share">Chia sẻ</span></span></td>
+                <td><div class="owner"><a href="#user1" class="avatar">S<div class="tooltip">support</div></a>support</div></td>
+                <td>15/8/2022</td><td>--</td><td class="menu">⋮</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- HỆ THỐNG POPUP HIỆU ỨNG -->
+    <div id="img1" class="popup"><a href="#" class="close"></a><div class="stage"><div class="box-gray fade">fade</div></div></div>
+    <div id="img2" class="popup"><a href="#" class="close"></a><div class="stage"><div class="box-gray change-color">change-color</div></div></div>
+    <div id="img3" class="popup"><a href="#" class="close"></a><div class="stage"><div class="box-gray grow">grow</div></div></div>
+    <div id="img4" class="popup"><a href="#" class="close"></a><div class="stage"><div class="box-gray shrink">shrink</div></div></div>
+    <div id="img5" class="popup"><a href="#" class="close"></a><div class="stage"><div class="box-gray rotate">rotate</div></div></div>
+    <div id="img6" class="popup"><a href="#" class="close"></a><div class="stage"><div class="box-gray square-to-circle">sq-to-circle</div></div></div>
+    <div id="img7" class="popup"><a href="#" class="close"></a><div class="stage"><div class="box-gray insert-border">insert-border</div></div></div>
+    <div id="user1" class="user-popup">
+        <a href="#" class="close"></a>
+        <div class="card">
+            <div class="avatar-big">S</div>
+            <h3>support</h3>
+            <p style="color: #666; font-size: 14px;">support@gmail.com</p>
+            <div class="box">Gửi thư</div>
+            <div class="actions"><span>💬</span><span>📅</span><span>📧</span></div>
+        </div>
+    </div>
+
+</body>
+</html>
