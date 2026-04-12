@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang biểu mẫu đăng ký</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif; /* Thêm font cho chữ đẹp hơn */
+    }
+
+    .nen-xam {
+      background-color: #eee;
+      width: 500px;
+      height: 550px; /* Tăng nhẹ chiều cao để thoáng hơn */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box; /* Giúp input không bị tràn khung */
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: blue;
+      color: white;
+      border-radius: 4px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s; /* Hiệu ứng mượt mà */
+    }
+
+    button:hover {
+      background-color: darkblue; /* Đổi màu khi di chuột */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nen-xam">
+    <div class="container">
+      <h1>Đăng Ký</h1>
+
+      <form>
+        <b><label>Tên:</label></b>
+        <input type="text" placeholder="Nhập tên của bạn">
+
+        <b><label>Email:</label></b>
+        <input type="email" placeholder="example@gmail.com">
+
+        <b><label>Mật khẩu:</label></b>
+        <input type="password" placeholder="********">
+
+        <button type="submit"><b>Đăng ký</b></button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

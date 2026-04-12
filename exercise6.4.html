@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Cá Nhân - 2 Bài Viết</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Header xanh lá, h1 chữ trắng, a chữ xanh dương */
+    .header-section {
+      background-color: rgb(9, 255, 0);
+      padding: 15px 0;
+      text-align: center;
+    }
+    h1 { color: white; margin-bottom: 10px; }
+    .nav a {
+      text-decoration: none;
+      color: blue;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    /* Layout chính */
+    .container {
+      display: flex;
+      min-height: 500px;
+    }
+
+    /* Cột trái: Chuyên mục có dấu chấm */
+    .sidebar {
+      flex: 1;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-right: 1px solid #ddd;
+    }
+    .sidebar ul {
+      list-style-type: disc;
+      padding-left: 25px;
+    }
+    .sidebar li { margin-bottom: 10px; }
+
+    /* Cột phải: Các bài viết xếp chồng */
+    .main-content {
+      flex: 3;
+      padding: 20px;
+    }
+
+    /* Định dạng bài viết: Tiêu đề -> Ảnh -> Chữ (xuống dòng) */
+    .post-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 40px; /* Khoảng cách giữa bài 1 và bài 2 */
+    }
+    .post-item img {
+      width: 350px;
+      height: 150px;
+      border: 3px solid blue;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* Phần liên hệ: Nền đen, chữ trắng, trải dài toàn trang */
+    .footer-contact {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-section">
+    <h1>Giới Thiệu Bản Thân</h1>
+    <div class="nav">
+      <a href="#">Home</a>
+      <a href="#">Categories</a>
+      <a href="#">About</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <h3>Chuyên mục</h3>
+      <ul>
+        <li>CSS</li>
+        <li>Java</li>
+        <li>HTML</li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <!-- Bài viết 1 -->
+      <div class="post-item">
+        <h3>Bài viết 1</h3>
+        <img src="JavaScript-Complete-Guide-copy-2.webp" alt="ảnh bài 1">
+        <p>Đây là nội dung tóm tắt của bài viết 1.</p>
+      </div>
+
+      <hr style="margin-bottom: 20px; border: 0.5px solid #eee;">
+
+      <!-- Bài viết 2 -->
+      <div class="post-item">
+        <h3>Bài viết 2</h3>
+        <img src="js.png" alt="ảnh bài 2">
+        <p>Đây là nội dung tóm tắt của bài viết 2.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-contact">
+    <p>Liên hệ: email@example.com</p>
+  </div>
+
+</body>
+</html>

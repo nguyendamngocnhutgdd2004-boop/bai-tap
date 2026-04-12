@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo một trang web giới thiệu</title>
+  
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Kết hợp h1 và thanh điều hướng chung một khối nền */
+    .header-section {
+      background-color: blue;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 10px; /* Tạo khoảng cách với hàng link bên dưới */
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    /* CSS cho phần Profile */
+    .profile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin: 40px 20px;
+    }
+
+    .profile img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      border: 3px solid blue;
+      object-fit: cover;
+    }
+
+    .profile-text {
+      max-width: 400px;
+      font-size: 16px;
+      line-height: 1.5; /* Giúp văn bản dễ đọc hơn */
+    }
+
+    /* CSS cho phần chân trang */
+    .footer-text {
+      background-color: aliceblue;
+      text-align: center;
+      padding: 15px 0;
+      width: 100%;
+    }
+
+    .text-blue {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Khối Header kết hợp -->
+  <div class="header-section">
+    <h1>Giới Thiệu Bản Thân</h1>
+    <div class="nav-links">
+      <a href="">Home</a>
+      <a href="">About</a>
+      <a href="">Contact</a>
+    </div>
+  </div>
+
+  <div class="profile">
+    <img src="hinh the.jpg" alt="ảnh cá nhân">
+    <div class="profile-text">
+      <p>Xin chào! Tôi là TSUBASA, một lập trình viên đam mê học hỏi và sáng tạo.</p>
+    </div>
+  </div>
+
+  <div class="footer-text">
+    <p>
+      @2026 [Ngọc Như]. Kết nối với tôi trên 
+      <span class="text-blue"><ins>Facebook</ins></span> 
+      hoặc 
+      <span class="text-blue"><ins>LinkedIn</ins></span>
+    </p>
+  </div>
+
+</body>
+</html>
