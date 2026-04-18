@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog Layout</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Header */
+    .header {
+      background-color: #29292a;
+      color: white;
+      padding: 15px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 { 
+      font-size: 20px; 
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    /* Bao quanh toàn bộ phần nội dung bên trái */
+    .content-wrapper {
+      width: 450px;
+      margin-left: 10%;
+      margin-top: 20px;
+      margin-bottom: 100px;
+    }
+
+    /* Nền xám đậm */
+    .featured-post {
+      background-color: #ededed;
+      padding: 30px;
+    }
+
+    .featured-post h2 { 
+      margin-bottom: 15px; 
+      font-size: 22px; 
+    }
+    .featured-post h3 { 
+      margin-bottom: 10px; 
+      font-size: 18px; 
+    }
+    .featured-post p { 
+      font-size: 14px; 
+      line-height: 1.6; 
+      margin-bottom: 10px; 
+    }
+    .read-more { 
+      color: #3498db; 
+      text-decoration: none; 
+      font-size: 14px; 
+    }
+
+    /* Nền xám nhạt */
+    .other-posts {
+      background-color: #f9f9f9; /* Màu xám rất nhạt */
+      padding: 30px;
+    }
+
+    .other-posts h2 { 
+      margin-bottom: 15px; 
+      font-size: 20px; 
+    }
+    .post-item { 
+      margin-bottom: 15px; 
+    }
+    .post-item h4 { 
+      font-size: 16px; 
+      margin-bottom: 3px; 
+    }
+    .post-item p { 
+      font-size: 13px; 
+      color: #666; 
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #29292a;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>MY BLOG</h1>
+    <div class="menu">
+      <a href="#">Home</a> 
+      <a href="#">About</a> 
+      <a href="#">Posts</a> 
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="featured-post">
+      <h2>Bài viết nổi bật</h2>
+      <h3>Tiêu đề bài viết chính</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut nulla eu lorem tincidunt tristique.</p>
+      <a href="https://www.lipsum.com/feed/html" class="read-more">Đọc thêm</a>
+    </div>
+
+    <div class="other-posts">
+      <h2>Các bài viết khác</h2>
+      <div class="post-item">
+        <h4>Bài viết 1</h4>
+        <p>Lorem ipsum dolor sit amet...</p>
+      </div>
+      <div class="post-item">
+        <h4>Bài viết 2</h4>
+        <p>Ut nulla eu lorem tincidunt...</p>
+      </div>
+      <div class="post-item">
+        <h4>Bài viết 3</h4>
+        <p>Consectetur adipiscing elit...</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2023 My Blog. All rights reserved.
+  </div>
+
+</body>
+</html>

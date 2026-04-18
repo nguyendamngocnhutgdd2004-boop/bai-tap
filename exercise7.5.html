@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bố cục sản phẩm dọc</title>
+  
+  <style>
+    /* Container chính xếp theo chiều dọc */
+    .main-container {
+      display: flex;
+      flex-direction: column; /* Đưa Big 2 xuống dưới Big 1 */
+      gap: 20px;
+      padding: 20px;
+      max-width: 800px; /* Giới hạn độ rộng */
+    }
+
+    /* Mỗi hàng gồm 1 Big và 4 Small */
+    .product-row {
+      display: flex;
+      gap: 15px;
+      align-items: stretch;
+    }
+
+    .large {
+      flex: 1; /* Độ rộng của ô Big */
+      background-color: rgb(65, 57, 86);
+      color: white;
+      display: flex;
+      border-radius: 8px;
+      min-height: 120px;
+      font-weight: bold;
+      justify-content: center; /* Căn giữa theo chiều ngang */
+      align-items: flex-start; /* Đẩy lên sát mép trên */
+      padding-top: 20px;
+    }
+
+    /* Lưới chứa 4 ô nhỏ bên cạnh */
+    .small-items-grid {
+      flex: 2; /* Độ rộng vùng chứa 4 ô nhỏ */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 cột nhỏ */
+      grid-template-rows: repeat(2, 1fr);    /* 2 hàng nhỏ */
+      gap: 10px;
+    }
+
+    .flex-item {
+      background-color: rgb(85, 75, 110);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="main-container">
+      <div class="product-row">
+        <div class="large">Big 1</div>
+        <div class="small-items-grid">
+          <div class="flex-item">Small 1</div>
+          <div class="flex-item">Small 2</div>
+          <div class="flex-item">Small 3</div>
+          <div class="flex-item">Small 4</div>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="large">Big 2</div>
+        <div class="small-items-grid">
+          <div class="flex-item">Small 5</div>
+          <div class="flex-item">Small 6</div>
+          <div class="flex-item">Small 7</div>
+          <div class="flex-item">Small 8</div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

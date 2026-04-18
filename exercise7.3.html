@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gộp cột trong grid</title>
+  
+  <style>
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .flex-item {
+      width: calc(25% - 20px); /* diện tích tổng thể là 100% --> 4 ô 1 hàng thì mỗi ô là 25% và phải trừ đi khoảng cách gap ở trên */
+      height: 50px;
+      background-color: green;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 4px;
+    }
+    .large {
+      width: calc(50% - 20px);
+    }
+  </style>
+</head>
+<body>
+    <div class="flex-container">
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item large">5</div>
+      <div class="flex-item">6</div>
+      <div class="flex-item">7</div>
+    </div>
+
+</body>
+</html>
