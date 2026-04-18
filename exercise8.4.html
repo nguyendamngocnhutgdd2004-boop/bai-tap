@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo một trang landing page</title>
+  
+  <style>
+    .header {
+      background-color: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    nav ul {
+      list-style: none; /* mật dấu chấm mặc định của thẻ ul */
+      display: flex;
+      gap: 20px;
+    }
+
+    .banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: gray;
+      height: 500px;
+      font-size: 100px;
+      color: #cecece;
+    }
+
+    .information {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-left: 10px;
+    }
+    .item {
+      width: calc(50% - 10px);
+      background-color: #ebeaea;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 4px;
+    }
+
+    .item-large {
+      width: calc(100% - 10px);
+    }
+
+    @media screen and (max-width: 1024px) {
+    .item {
+      width: calc(100% - 10px);
+    }
+    }
+  </style>
+</head>
+<body>
+    <header class="header">
+      <div class="logo">Logo</div>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <section class="banner">
+      <p>1200 x 400</p>
+    </section>
+    <section class="information">
+      <article class="item">Giới thiệu 1</article>
+      <article class="item">Giới thiệu 2</article>
+      <article class="item item-large">Giới thiệu 3</article>
+    </section>
+
+</body>
+</html>

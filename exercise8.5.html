@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripGuide Final Responsive</title>
+    <style>
+        :root { 
+          --primary: #3b71fe; 
+          --bg: #f6f7fb; 
+          --text-gray: #777e90; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: var(--bg); 
+            padding: 40px 20px;
+        }
+
+        /* ===== BẢNG DANH SÁCH TỆP ===== */
+        .table-wrap { 
+          max-width: 900px; margin: 0 auto; background: #fff; 
+          border-radius: 16px; overflow: hidden; 
+          box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td, th { padding: 20px; border-bottom: 1px solid #eee; text-align: left; }
+        tr:hover { background: #fafafa; cursor: pointer; }
+        .file-link { color: var(--primary); font-weight: 600; cursor: pointer; }
+        .avatar { 
+          width: 28px; height: 28px; border-radius: 50%; background: #e91e63; 
+          color: #fff; display: inline-flex; align-items: center; justify-content: center; 
+          font-size: 11px; margin-right: 10px; cursor: pointer; 
+        }
+
+        /* ===== HEADER TRIPGUIDE ===== */
+        .header {
+          background: #fff; border-bottom: 1px solid #eee;
+          padding: 14px 40px; display: flex;
+          justify-content: space-between; align-items: center;
+          position: sticky; top: 0; z-index: 10;
+        }
+        .header-logo {
+          display: flex; align-items: center; gap: 8px;
+          font-weight: 700; font-size: 16px; color: #1a1a2e;
+        }
+        .header-logo .logo-icon {
+          width: 32px; height: 32px; background: var(--primary);
+          border-radius: 8px; display: flex; align-items: center;
+          justify-content: center; color: #fff; font-size: 14px; font-weight: 800;
+        }
+        .header-right { display: flex; align-items: center; gap: 16px; }
+        .header-flag { font-size: 18px; cursor: pointer; }
+        .header-user {
+          display: flex; align-items: center; gap: 8px;
+          background: #f6f7fb; border-radius: 20px;
+          padding: 6px 14px 6px 6px; cursor: pointer; font-size: 13px; font-weight: 600;
+        }
+        .header-user .u-avatar {
+          width: 26px; height: 26px; border-radius: 50%;
+          background: #ff7675; color: #fff;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 11px; font-weight: 700;
+        }
+        .breadcrumb {
+          font-size: 12px; color: #aaa; padding: 12px 40px;
+          display: flex; gap: 6px; align-items: center;
+          max-width: 1180px; margin: 0 auto;
+        }
+        .breadcrumb span { color: #333; }
+        .breadcrumb .sep { color: #ccc; }
+
+        /* ===== OVERLAY ===== */
+        .overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+            display: none; z-index: 1000; backdrop-filter: blur(5px);
+            justify-content: center; align-items: flex-end;
+        }
+        .overlay.active { display: flex; }
+
+        /* ===== MENU "MỞ BẰNG" ===== */
+        .overlay.active .top-menu-area { display: block; }
+        .drop-btn { 
+          background: #1a1a1a; color: #fff; padding: 10px 24px; 
+          border-radius: 25px; border: 1px solid #444; cursor: pointer; font-size: 14px; 
+        }
+        .drop-content { 
+            background: #1a1a1a; width: 280px; border-radius: 15px; 
+            margin-top: 8px; padding: 10px 0; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6); display: none;
+        }
+        .top-menu-area:hover .drop-content { display: block; }
+        .drop-item { 
+          padding: 12px 20px; display: flex; align-items: center; 
+          gap: 12px; color: #fff; cursor: pointer; font-size: 13px; 
+        }
+        .drop-item:hover { background: #333; }
+
+        /* ===== SHARED COMPONENTS ===== */
+        .box-info { 
+          background: #f8f9fa; padding: 15px; border-radius: 12px; 
+          border: 1px solid #eee; margin-bottom: 12px; 
+          display: flex; justify-content: space-between; align-items: center; font-size: 14px; 
+        }
+        .h-img-m { 
+          width: 100%; height: 180px; 
+          background: url('https://picsum.photos/seed/hotel/600/300') center/cover; 
+          border-radius: 16px; margin: 0 0 16px;
+        }
+        .cc-visual { 
+          border-radius: 16px; padding: 18px; color: #fff; 
+          display: flex; flex-direction: column; justify-content: space-between; 
+        }
+        .blue { background: linear-gradient(135deg, #a5b4fc, #6366f1); }
+        .green { background: linear-gradient(135deg, #bef264, #65a30d); }
+        .btn-pay { 
+          width: 100%; padding: 18px; border-radius: 40px; background: var(--primary); 
+          color: #fff; border: none; font-weight: bold; cursor: pointer; font-size: 15px;
+        }
+
+        /* ===== CARD SECTIONS ===== */
+        .section-card {
+          background: #fff; border: 1px solid #eee;
+          border-radius: 20px; padding: 24px; margin-bottom: 20px;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .section-title {
+          font-weight: 700; font-size: 16px; margin-bottom: 16px; color: #1a1a2e;
+        }
+        .edit-btn { font-size: 16px; cursor: pointer; opacity: 0.5; }
+        .edit-btn:hover { opacity: 1; }
+        .form-label { font-size: 12px; color: #aaa; display: block; margin-bottom: 6px; }
+        .form-input {
+          background: #f8f9fa; border: 1px solid #eee;
+          border-radius: 10px; padding: 12px 14px; font-size: 14px; color: #333; cursor: pointer;
+        }
+        .detail-row {
+          display: flex; justify-content: space-between;
+          font-size: 14px; color: #555; padding: 8px 0;
+        }
+
+        /* ============================= */
+        /* MODAL HÀNG 2: MOBILE SLIDE   */
+        /* ============================= */
+        .modal-mobile-tall {
+            background: #fff; 
+            width: 32%; min-width: 375px; 
+            height: 100vh; overflow-y: auto; position: relative;
+            box-shadow: 0 0 60px rgba(0,0,0,0.5);
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .overlay.active .modal-mobile-tall { transform: translateY(0); }
+        .modal-mobile-tall::-webkit-scrollbar { width: 0; }
+        .m-body { padding: 80px 25px 40px; }
+        .m-logo-line { 
+          display: flex; justify-content: space-between; 
+          margin-bottom: 30px; font-weight: bold; color: var(--primary); 
+        }
+
+        /* ============================= */
+        /* MODAL HÀNG 1: DESKTOP FULL   */
+        /* ============================= */
+        .modal-desktop-full {
+            background: #f6f7fb; width: 100vw; height: 100vh;
+            position: fixed; inset: 0; overflow-y: auto;
+            animation: fadeIn 0.4s ease;
+        }
+        .modal-desktop-full::-webkit-scrollbar { width: 6px; }
+        .modal-desktop-full::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+        .dskt-layout { 
+          max-width: 1100px; margin: 30px auto; padding: 0 40px;
+          display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; 
+        }
+        .promo-banner { 
+          background: var(--primary); border-radius: 24px; padding: 50px; 
+          color: #fff; max-width: 1020px; margin: 30px auto;
+          display: flex; justify-content: space-between; align-items: center; gap: 20px;
+        }
+        .footer-full { 
+          border-top: 1px solid #eee; padding: 40px;
+          max-width: 1100px; margin: 0 auto;
+          display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; font-size: 14px; 
+        }
+
+        /* ===== USER CARD POPUP ===== */
+        .user-card { 
+          background: #fff; padding: 30px; border-radius: 20px; width: 280px; 
+          text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+        }
+        .avatar-lg { 
+          width: 60px; height: 60px; background: #ff7675; color: #fff; 
+          border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+          font-size: 24px; margin: 0 auto 15px; font-weight: bold; 
+        }
+
+        /* ============================================ */
+        /*  RESPONSIVE — TABLET (max-width: 768px)     */
+        /* ============================================ */
+        @media (max-width: 768px) {
+            th:last-child, td:last-child { display: none; }
+            td, th { padding: 14px 12px; }
+            .header { padding: 12px 16px; }
+            .header-flag { display: none; }
+            .header-user { font-size: 12px; padding: 5px 10px 5px 5px; }
+            .breadcrumb { padding: 10px 16px; font-size: 11px; }
+            .dskt-layout { grid-template-columns: 1fr; gap: 20px; padding: 0 16px; margin: 16px auto; }
+            .dskt-layout > div:last-child { order: -1; }
+            .promo-banner { flex-direction: column; align-items: flex-start; padding: 30px; margin: 20px 16px; }
+            .promo-banner input { width: 100% !important; }
+            .footer-full { grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px 16px; }
+            .modal-mobile-tall { width: 100%; min-width: unset; }
+        }
+
+        /* ============================================ */
+        /*  RESPONSIVE — MOBILE NHỎ (max-width: 480px) */
+        /* ============================================ */
+        @media (max-width: 480px) {
+            body { padding: 16px 10px; }
+            .file-link { font-size: 13px; }
+            td, th { padding: 12px 8px; font-size: 13px; }
+            .header-flag { display: none; }
+            .breadcrumb { display: none; }
+            .promo-banner { padding: 20px; margin: 16px; }
+            .promo-banner h2 { font-size: 18px; }
+            .footer-full { grid-template-columns: 1fr; gap: 16px; }
+            .m-body { padding: 60px 18px 30px; }
+            .m-logo-line { font-size: 14px; }
+            .cc-visual { min-height: 110px; }
+            .user-card { width: 90vw; padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Tên tệp</th><th>Chủ sở hữu</th><th>Kiểu xem</th></tr></thead>
+            <tbody>
+                <tr onclick="openModal('desktopOverlay')">
+                    <td><span class="file-link">🖥️ hotel payment.png</span></td>
+                    <td><span class="avatar" onclick="event.stopPropagation(); openModal('userOverlay')">S</span> support</td>
+                    <td><b>Desktop Full</b></td>
+                </tr>
+                <tr onclick="openModal('mobileOverlay')">
+                    <td><span class="file-link">📱 hotelpayment-mobile.png</span></td>
+                    <td><span class="avatar" onclick="event.stopPropagation(); openModal('userOverlay')">S</span> support</td>
+                    <td><b>Mobile Slide (100vh)</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- POPUP USER -->
+    <div class="overlay" id="userOverlay" style="align-items:center" onclick="closeAll()">
+        <div class="user-card" onclick="event.stopPropagation()">
+            <div class="avatar-lg">S</div>
+            <h3>support</h3>
+            <p style="color: gray; margin-bottom: 20px;">support@gmail.com</p>
+            <div style="background: var(--primary); color: #fff; padding: 10px; border-radius: 10px; cursor: pointer;">Gửi thư</div>
+        </div>
+    </div>
+
+    <!-- MODAL HÀNG 1: DESKTOP FULL SCREEN -->
+    <div class="overlay" id="desktopOverlay" style="align-items:flex-start">
+        <div class="modal-desktop-full">
+
+            <!-- HEADER -->
+            <div class="header">
+                <div class="header-logo">
+                    <div class="logo-icon">T</div>
+                    TripGuide
+                </div>
+                <div class="header-right">
+                    <span class="header-flag">🇺🇸</span>
+                    <span class="header-flag">🌐</span>
+                    <div class="header-user">
+                        <div class="u-avatar">S</div>
+                        Dalosar ▾
+                    </div>
+                    <button onclick="closeAll()" style="cursor:pointer;padding:7px 16px;border-radius:10px;border:1px solid #ddd;font-size:13px;background:#fff">× Thoát</button>
+                </div>
+            </div>
+
+            <!-- BREADCRUMB -->
+            <div style="padding: 12px 40px;">
+                <div class="breadcrumb" style="padding:0;max-width:none">
+                    Home <span class="sep">›</span>
+                    Hotel list <span class="sep">›</span>
+                    Hotel details <span class="sep">›</span>
+                    <span>Confirm and pay</span>
+                </div>
+            </div>
+
+            <!-- LAYOUT CHÍNH: 2 CỘT -->
+            <div class="dskt-layout">
+
+                <!-- CỘT TRÁI -->
+                <div>
+                    <h1 style="font-size:30px; margin-bottom:24px; color:#1a1a2e">Confirm your Book</h1>
+
+                    <!-- CARD 1: YOUR TOUR -->
+                    <div class="section-card">
+                        <div class="section-title">Your tour</div>
+                        <div class="box-info">
+                            <div>
+                                <small style="color:#aaa;display:block;margin-bottom:4px">Date</small>
+                                <b>June 27 – 30, 2020</b>
+                            </div>
+                            <span class="edit-btn">✏️</span>
+                        </div>
+                        <div class="box-info" style="margin-bottom:0">
+                            <div>
+                                <small style="color:#aaa;display:block;margin-bottom:4px">Traveller</small>
+                                <b>1 Passenger</b>
+                            </div>
+                            <span class="edit-btn">✏️</span>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2: CREDIT CARDS -->
+                    <div class="section-card">
+                        <div class="section-title">Credit Cards</div>
+
+                        <!-- Logo thanh toán -->
+                        <div style="display:flex;gap:8px;margin-bottom:20px;align-items:center;flex-wrap:wrap">
+                            <div style="display:flex;margin-right:4px">
+                                <div style="width:26px;height:26px;border-radius:50%;background:#eb001b"></div>
+                                <div style="width:26px;height:26px;border-radius:50%;background:#f79e1b;margin-left:-10px;opacity:0.9"></div>
+                            </div>
+                            <div style="border:1px solid #ddd;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700;color:#003087">PAYPAL</div>
+                            <div style="border:1px solid #ddd;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700;color:#1a1aff;font-style:italic">VISA</div>
+                            <div style="border:1px solid #ddd;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700;color:#2e77bc">AMEX</div>
+                        </div>
+
+                        <!-- 2 thẻ credit card ngang -->
+                        <div style="display:flex;gap:14px;margin-bottom:20px;flex-wrap:wrap">
+                            <div class="cc-visual blue" style="flex:1;min-width:140px;height:110px">
+                                <div style="font-size:11px;opacity:0.85;letter-spacing:1px">8848 xxxx xxxx 7894</div>
+                                <div>
+                                    <div style="font-size:10px;opacity:0.7;margin-bottom:4px">Holder Name</div>
+                                    <div style="display:flex;justify-content:space-between;align-items:center">
+                                        <b style="font-size:12px">Mastercard</b>
+                                        <div style="display:flex">
+                                            <div style="width:20px;height:20px;border-radius:50%;background:#eb001b"></div>
+                                            <div style="width:20px;height:20px;border-radius:50%;background:#f79e1b;margin-left:-8px;opacity:0.85"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cc-visual green" style="flex:1;min-width:140px;height:110px">
+                                <div style="font-size:11px;opacity:0.85;letter-spacing:1px">8848 xxxx xxxx 7894</div>
+                                <div>
+                                    <div style="font-size:10px;opacity:0.7;margin-bottom:4px">Holder Name</div>
+                                    <div style="display:flex;justify-content:space-between;align-items:center">
+                                        <b style="font-size:12px">VISA</b>
+                                        <b style="font-size:15px;font-style:italic;opacity:0.9">VISA</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form nhập thẻ -->
+                        <div style="display:flex;flex-direction:column;gap:14px">
+                            <div>
+                                <label class="form-label">Card Number</label>
+                                <div class="form-input">5884 9248 4444 3333 <span style="float:right;color:#aaa">▾</span></div>
+                            </div>
+                            <div style="display:flex;gap:12px">
+                                <div style="flex:1">
+                                    <label class="form-label">Expiry Date</label>
+                                    <div class="form-input" style="color:#bbb">MM / YY</div>
+                                </div>
+                                <div style="flex:1">
+                                    <label class="form-label">CVC/CVV</label>
+                                    <div class="form-input" style="color:#bbb;letter-spacing:4px">••••</div>
+                                </div>
+                            </div>
+                            <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;color:#555">
+                                <input type="checkbox" checked style="accent-color:var(--primary);width:16px;height:16px"> Save Card
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn-pay">Confirm and reserve</button>
+                </div>
+
+                <!-- CỘT PHẢI -->
+                <div style="display:flex;flex-direction:column;gap:20px">
+
+                    <!-- CARD 3A: HOTEL INFO -->
+                    <div class="section-card">
+                        <div style="display:flex;align-items:center;gap:6px;margin-bottom:14px">
+                            <span style="color:#f59e0b;font-size:14px">★</span>
+                            <span style="font-size:14px;font-weight:700">4.8</span>
+                            <span style="font-size:12px;color:#aaa">(102 reviews)</span>
+                        </div>
+                        <div class="h-img-m"></div>
+                        <h3 style="font-size:15px;margin-bottom:6px;color:#1a1a2e">Switzerland Hotels and Places to Stay</h3>
+                        <p style="font-size:12px;color:#aaa;margin-bottom:14px">1 bedroom + 1 private room</p>
+                        <div style="display:flex;gap:24px;font-size:12px;border-top:1px solid #eee;padding-top:14px;margin-bottom:10px">
+                            <div>
+                                <div style="color:#aaa;margin-bottom:3px">Check in</div>
+                                <b style="color:#333">June 27, 2020</b>
+                            </div>
+                            <div>
+                                <div style="color:#aaa;margin-bottom:3px">Check out</div>
+                                <b style="color:#333">June 30, 2020</b>
+                            </div>
+                        </div>
+                        <div style="font-size:12px;color:#555">
+                            <span style="color:#aaa">Guest</span> &nbsp; 2 guests
+                        </div>
+                    </div>
+
+                    <!-- CARD 3B: BOOKED DETAILS -->
+                    <div class="section-card">
+                        <div class="section-title">Booked details</div>
+                        <div class="detail-row"><span>$19 × 5 nights</span><span style="font-weight:600">$833</span></div>
+                        <div class="detail-row"><span>Occupancy text and fee</span><span style="color:#e74c3c;font-weight:600">-$125</span></div>
+                        <div class="detail-row"><span>Service fee</span><span style="font-weight:600">$103</span></div>
+                        <div class="detail-row" style="font-weight:700;font-size:17px;border-top:1px dashed #ddd;padding-top:14px;margin-top:6px">
+                            <span>Total</span><span style="color:var(--primary)">$833</span>
+                        </div>
+                        <div style="text-align:center;margin-top:16px">
+                            <span style="font-size:12px;color:var(--primary);cursor:pointer;text-decoration:underline;opacity:0.7">Report this property</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PROMO BANNER -->
+            <div class="promo-banner">
+                <div>
+                    <h2 style="margin-bottom:8px">Get our pro offers</h2>
+                    <p style="opacity:0.85;font-size:14px">Create a visual identity for your brand</p>
+                </div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap">
+                    <input type="text" placeholder="Type your email here" style="padding:14px 18px;border-radius:10px;border:none;width:240px;font-size:14px">
+                    <button style="padding:14px 24px;background:#fff;color:var(--primary);border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px">Subscribe</button>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="footer-full">
+                <div>
+                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+                        <div style="width:28px;height:28px;background:var(--primary);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px">T</div>
+                        <b style="color:var(--primary);font-size:18px">TripGuide</b>
+                    </div>
+                    <p style="color:#aaa;font-size:13px;line-height:1.6">This is the team that specialises in making sure it is a your interior looks cool</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom:12px">Services</h4>
+                    <p style="color:#aaa;margin-bottom:6px;font-size:13px">Travel Booking</p>
+                    <p style="color:#aaa;margin-bottom:6px;font-size:13px">Flight Booking</p>
+                    <p style="color:#aaa;margin-bottom:6px;font-size:13px">Car Booking</p>
+                    <p style="color:#aaa;font-size:13px">Traveling</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom:12px">Support</h4>
+                    <p style="color:#aaa;margin-bottom:6px;font-size:13px">Account</p>
+                    <p style="color:#aaa;margin-bottom:6px;font-size:13px">Legal</p>
+                    <p style="color:#aaa;margin-bottom:6px;font-size:13px">Contact</p>
+                    <p style="color:#aaa;font-size:13px">Privacy Policy</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom:12px">Business</h4>
+                    <p style="color:#aaa;margin-bottom:6px;font-size:13px">Success</p>
+                    <p style="color:#aaa;margin-bottom:6px;font-size:13px">About Locate</p>
+                    <p style="color:#aaa;font-size:13px">Information</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL HÀNG 2: MOBILE SLIDE -->
+    <div class="overlay" id="mobileOverlay" onclick="closeAll()">
+        <div class="top-menu-area" onclick="event.stopPropagation()">
+            <button class="drop-btn">Mở bằng ▾</button>
+            <div class="drop-content">
+                <p style="padding:10px 20px;font-size:11px;color:#666">Ứng dụng đề xuất</p>
+                <div class="drop-item">📄 DocHub - PDF Sign</div>
+                <div class="drop-item">☁️ CloudConvert</div>
+                <div class="drop-item">✚ Kết nối ứng dụng khác</div>
+            </div>
+        </div>
+
+        <div class="modal-mobile-tall" onclick="event.stopPropagation()">
+
+            <!-- HEADER MOBILE -->
+            <div style="background:#fff;border-bottom:1px solid #eee;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5">
+                <div style="display:flex;align-items:center;gap:7px;font-weight:700;font-size:15px;color:#1a1a2e">
+                    <div style="width:28px;height:28px;background:var(--primary);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px">T</div>
+                    TripGuide
+                </div>
+                <div style="display:flex;align-items:center;gap:10px">
+                    <span style="font-size:16px">🇺🇸</span>
+                    <div style="display:flex;align-items:center;gap:6px;background:#f6f7fb;border-radius:16px;padding:5px 10px 5px 5px;font-size:12px;font-weight:600">
+                        <div style="width:22px;height:22px;border-radius:50%;background:#ff7675;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700">S</div>
+                        Dalosar
+                    </div>
+                </div>
+            </div>
+
+            <!-- BREADCRUMB MOBILE -->
+            <div style="padding:10px 20px;font-size:11px;color:#aaa;display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid #f0f0f0;background:#fff">
+                Home <span style="color:#ddd">›</span>
+                Hotel list <span style="color:#ddd">›</span>
+                Hotel details <span style="color:#ddd">›</span>
+                <span style="color:#333">Confirm and pay</span>
+            </div>
+
+            <div style="padding:20px 18px 40px;background:#f6f7fb;min-height:calc(100vh - 100px)">
+
+                <h1 style="font-size:22px;margin-bottom:20px;color:#1a1a2e">Confirm your Book</h1>
+
+                <!-- CARD: YOUR TOUR -->
+                <div class="section-card" style="margin-bottom:16px">
+                    <div class="section-title" style="font-size:15px">Your tour</div>
+                    <div class="box-info" style="font-size:13px">
+                        <div>
+                            <small style="color:#aaa;display:block;margin-bottom:3px">Date</small>
+                            <b>June 27 – 30, 2020</b>
+                        </div>
+                        <span style="font-size:15px;opacity:0.4;cursor:pointer">✏️</span>
+                    </div>
+                    <div class="box-info" style="font-size:13px;margin-bottom:0">
+                        <div>
+                            <small style="color:#aaa;display:block;margin-bottom:3px">Traveller</small>
+                            <b>1 Passenger</b>
+                        </div>
+                        <span style="font-size:15px;opacity:0.4;cursor:pointer">✏️</span>
+                    </div>
+                </div>
+
+                <!-- CARD: HOTEL INFO -->
+                <div class="section-card" style="margin-bottom:16px">
+                    <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px">
+                        <span style="color:#f59e0b;font-size:13px">★</span>
+                        <span style="font-size:13px;font-weight:700">4.8</span>
+                        <span style="font-size:11px;color:#aaa">(102 reviews)</span>
+                    </div>
+                    <div style="width:100%;height:160px;background:url('https://picsum.photos/seed/hotel/600/300') center/cover;border-radius:14px;margin-bottom:14px"></div>
+                    <h3 style="font-size:14px;margin-bottom:5px;color:#1a1a2e">Switzerland Hotels and Places to Stay</h3>
+                    <p style="font-size:12px;color:#aaa;margin-bottom:12px">1 bedroom + 1 private room</p>
+                    <div style="display:flex;gap:20px;font-size:12px;border-top:1px solid #eee;padding-top:12px;margin-bottom:8px">
+                        <div>
+                            <div style="color:#aaa;margin-bottom:2px">Check in</div>
+                            <b style="color:#333">June 27, 2020</b>
+                        </div>
+                        <div>
+                            <div style="color:#aaa;margin-bottom:2px">Check out</div>
+                            <b style="color:#333">June 30, 2020</b>
+                        </div>
+                    </div>
+                    <div style="font-size:12px;color:#555"><span style="color:#aaa">Guest</span> &nbsp; 2 guests</div>
+                </div>
+
+                <!-- CARD: BOOKED DETAILS -->
+                <div class="section-card" style="margin-bottom:16px">
+                    <div class="section-title" style="font-size:15px">Booked details</div>
+                    <div class="detail-row" style="font-size:13px"><span>$19 × 5 nights</span><span style="font-weight:600">$833</span></div>
+                    <div class="detail-row" style="font-size:13px"><span>Occupancy text and fee</span><span style="color:#e74c3c;font-weight:600">-$125</span></div>
+                    <div class="detail-row" style="font-size:13px"><span>Service fee</span><span style="font-weight:600">$103</span></div>
+                    <div class="detail-row" style="font-weight:700;font-size:16px;border-top:1px dashed #ddd;padding-top:12px;margin-top:4px">
+                        <span>Total</span><span style="color:var(--primary)">$833</span>
+                    </div>
+                    <div style="text-align:center;margin-top:12px">
+                        <span style="font-size:12px;color:var(--primary);cursor:pointer;text-decoration:underline;opacity:0.7">Report this property</span>
+                    </div>
+                </div>
+
+                <!-- CARD: CREDIT CARDS -->
+                <div class="section-card" style="margin-bottom:16px">
+                    <div class="section-title" style="font-size:15px">Credit Cards</div>
+                    <div style="display:flex;gap:6px;margin-bottom:16px;align-items:center;flex-wrap:wrap">
+                        <div style="display:flex;margin-right:2px">
+                            <div style="width:22px;height:22px;border-radius:50%;background:#eb001b"></div>
+                            <div style="width:22px;height:22px;border-radius:50%;background:#f79e1b;margin-left:-8px;opacity:0.9"></div>
+                        </div>
+                        <div style="border:1px solid #ddd;border-radius:5px;padding:2px 8px;font-size:10px;font-weight:700;color:#003087">PAYPAL</div>
+                        <div style="border:1px solid #ddd;border-radius:5px;padding:2px 8px;font-size:10px;font-weight:700;color:#1a1aff;font-style:italic">VISA</div>
+                        <div style="border:1px solid #ddd;border-radius:5px;padding:2px 8px;font-size:10px;font-weight:700;color:#2e77bc">AMEX</div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px">
+                        <div class="cc-visual blue" style="height:105px">
+                            <div style="font-size:11px;opacity:0.85;letter-spacing:1px">8848 xxxx xxxx 7894</div>
+                            <div>
+                                <div style="font-size:10px;opacity:0.7;margin-bottom:4px">Holder Name</div>
+                                <div style="display:flex;justify-content:space-between;align-items:center">
+                                    <b style="font-size:12px">Mastercard</b>
+                                    <div style="display:flex">
+                                        <div style="width:18px;height:18px;border-radius:50%;background:#eb001b"></div>
+                                        <div style="width:18px;height:18px;border-radius:50%;background:#f79e1b;margin-left:-7px;opacity:0.85"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cc-visual green" style="height:105px">
+                            <div style="font-size:11px;opacity:0.85;letter-spacing:1px">8848 xxxx xxxx 7894</div>
+                            <div>
+                                <div style="font-size:10px;opacity:0.7;margin-bottom:4px">Holder Name</div>
+                                <div style="display:flex;justify-content:space-between;align-items:center">
+                                    <b style="font-size:12px">VISA</b>
+                                    <b style="font-size:14px;font-style:italic;opacity:0.9">VISA</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:12px">
+                        <div>
+                            <label class="form-label">Card Number</label>
+                            <div class="form-input" style="font-size:13px">5884 9248 4444 3333 <span style="float:right;color:#aaa">▾</span></div>
+                        </div>
+                        <div style="display:flex;gap:10px">
+                            <div style="flex:1">
+                                <label class="form-label">Expiry Date</label>
+                                <div class="form-input" style="color:#bbb;font-size:13px">MM / YY</div>
+                            </div>
+                            <div style="flex:1">
+                                <label class="form-label">CVC/CVV</label>
+                                <div class="form-input" style="color:#bbb;letter-spacing:4px;font-size:13px">••••</div>
+                            </div>
+                        </div>
+                        <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;color:#555">
+                            <input type="checkbox" checked style="accent-color:var(--primary);width:15px;height:15px"> Save Card
+                        </label>
+                    </div>
+                </div>
+
+                <!-- NÚT CONFIRM -->
+                <button class="btn-pay" style="margin-bottom:20px">Confirm and reserve</button>
+
+                <!-- PROMO BANNER MOBILE -->
+                <div style="background:var(--primary);border-radius:18px;padding:24px;color:#fff;margin-bottom:20px">
+                    <h3 style="font-size:16px;margin-bottom:6px">Get our pro offers</h3>
+                    <p style="font-size:12px;opacity:0.85;margin-bottom:16px">Create a visual identity for your brand</p>
+                    <div style="display:flex;gap:8px">
+                        <input type="text" placeholder="Type your email here" style="flex:1;padding:10px 12px;border-radius:8px;border:none;font-size:13px;min-width:0">
+                        <button style="padding:10px 14px;background:#fff;color:var(--primary);border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:12px;white-space:nowrap">Subscribe</button>
+                    </div>
+                </div>
+
+                <!-- FOOTER MOBILE -->
+                <div style="border-top:1px solid #eee;padding-top:24px">
+                    <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+                        <div style="width:24px;height:24px;background:var(--primary);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:10px">T</div>
+                        <b style="color:var(--primary);font-size:15px">TripGuide</b>
+                    </div>
+                    <p style="color:#aaa;font-size:12px;margin-bottom:20px;line-height:1.6">This is the team that specialises in making sure it is a your interior looks cool</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:12px">
+                        <div>
+                            <b style="display:block;margin-bottom:8px;font-size:13px">Services</b>
+                            <p style="color:#aaa;margin-bottom:5px">Travel Booking</p>
+                            <p style="color:#aaa;margin-bottom:5px">Flight Booking</p>
+                            <p style="color:#aaa;margin-bottom:5px">Car Booking</p>
+                            <p style="color:#aaa">Traveling</p>
+                        </div>
+                        <div>
+                            <b style="display:block;margin-bottom:8px;font-size:13px">Support</b>
+                            <p style="color:#aaa;margin-bottom:5px">Account</p>
+                            <p style="color:#aaa;margin-bottom:5px">Legal</p>
+                            <p style="color:#aaa;margin-bottom:5px">Contact</p>
+                            <p style="color:#aaa">Privacy Policy</p>
+                        </div>
+                        <div>
+                            <b style="display:block;margin-bottom:8px;font-size:13px">Business</b>
+                            <p style="color:#aaa;margin-bottom:5px">Success</p>
+                            <p style="color:#aaa;margin-bottom:5px">About Locate</p>
+                            <p style="color:#aaa">Information</p>
+                        </div>
+                    </div>
+                    <div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid #f0f0f0;color:#ccc;font-size:11px">© 2026 TripGuide Inc.</div>
+                </div>
+
+                <div style="height:40px"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+        function closeAll() {
+            document.querySelectorAll('.overlay').forEach(el => el.classList.remove('active'));
+        }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('overlay')) closeAll();
+        }
+    </script>
+</body>
+</html>

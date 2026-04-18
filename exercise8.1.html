@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gộp cột trong grid</title>
+  
+  <style>
+    .flex-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .flex-item {
+      width: calc(50% - 20px);
+      background-color: lightblue;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+    }
+    .large {
+      width: calc(100% - 20px);
+    } 
+
+    @media screen and (max-width: 1024px) {
+    .flex-item {
+      width: calc(100% - 20px);
+    }
+    }
+  </style>
+</head>
+<body>
+    <div class="flex-container">
+      <div class="flex-item">Khối 1</div>
+      <div class="flex-item">Khối 2</div>
+      <div class="flex-item large">Khối 3</div>
+    </div>
+
+</body>
+</html>

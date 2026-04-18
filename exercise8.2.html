@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive với flexbox</title>
+  
+  <style>
+    .flex-container {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .flex-item {
+      width: calc(25% - 10px);
+      background-color: pink;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+    }
+   /* màn hình tablet */ 
+    @media screen and (max-width: 1024px) {
+    .flex-item {
+      width: calc(50% - 10px);
+    }
+    }
+    /* màn hình mobile */
+    @media screen and (max-width: 768px) {
+    .flex-item {
+      width: calc(100% - 10px);
+    }
+    }
+  </style>
+</head>
+<body>
+    <div class="flex-container">
+      <div class="flex-item">Cột 1</div>
+      <div class="flex-item">Cột 2</div>
+      <div class="flex-item">Cột 3</div>
+      <div class="flex-item">Cột 4</div>
+    </div>
+
+</body>
+</html>
