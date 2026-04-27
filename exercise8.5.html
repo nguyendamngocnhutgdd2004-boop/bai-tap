@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cắt giao diện về Responsive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        <link href="8.5.css" rel="stylesheet">
+</head>
+<body>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Tên tệp</th><th>Chủ sở hữu</th><th>Kiểu xem</th></tr>
+      </thead>
+      <tbody>
+        <tr onclick="openModal('mobileOverlay')">
+          <td><span class="file-link">📱 hotelpayment-mobile.png</span></td>
+          <td><span class="avatar" onclick="event.stopPropagation(); openModal('userOverlay')">S</span> support</td>
+          <td><b>Mobile Slide (100vh)</b></td>
+        </tr>
+        <tr onclick="openModal('desktopOverlay')">
+          <td><span class="file-link">🖥️ hotel payment.png</span></td>
+          <td><span class="avatar" onclick="event.stopPropagation(); openModal('userOverlay')">S</span> support</td>
+          <td><b>Desktop Full</b></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== POPUP USER ===== -->
+  <div class="overlay overlay--center" id="userOverlay" onclick="closeAll()">
+    <div class="user-card" onclick="event.stopPropagation()">
+      <div class="avatar-lg">S</div>
+      <h3>support</h3>
+      <p class="user-email">support@gmail.com</p>
+      <div class="btn-send">Gửi thư</div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL DESKTOP FULL SCREEN ===== -->
+  <div class="overlay overlay--top" id="desktopOverlay">
+    <div class="modal-desktop-full">
+
+      <!-- HEADER -->
+      <div class="header">
+        <div class="header-logo"><img src="resource/logo.png"></div>
+        <div class="header-right">
+          <span class="header-flag">USD</span>
+          <span class="header-flag"><img src="resource/united-states.png"></span>
+          <span class="header-flag">
+            <div class="bell-wrapper">
+              <div class="footer-bell">
+                <img src="resource/bell.png" style="width:18px;height:18px;">
+                <span class="bell-badge">1</span>
+              </div>
+            </div>
+          </span>
+          <img class="header-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVfHORQFLyUf_rNove-xUmxIskDeMJ63REz_YIMQ6S0vCyQdkBvJos4igKspvCgpqnpy8h0xM--1uckzZIxDgyoHy37-MowkF-YzvVx8&s=10" alt="avatar">
+          <button class="btn-exit" onclick="closeAll()">× Thoát</button>
+        </div>
+      </div>
+
+      <!-- BREADCRUMB -->
+      <div class="breadcrumb">
+        Home <span class="sep">›</span>
+        Hotel list <span class="sep">›</span>
+        Hotel details <span class="sep">›</span>
+        <span class="breadcrumb__active">Confirm and pay</span>
+      </div>
+
+      <!-- LAYOUT 2 CỘT -->
+      <div class="dskt-layout">
+
+        <!-- CỘT TRÁI -->
+        <div class="dskt-col-left">
+          <h1 class="page-title">Confirm your Book</h1>
+
+          <!-- CARD: YOUR TOUR -->
+          <div class="section-card">
+            <div class="section-title">Your tour</div>
+            <div class="box-info">
+              <div>
+                <small class="field-label">Date</small>
+                <input type="date" class="field-input" id="checkinInput">
+              </div>
+              <span class="edit-btn">✏️</span>
+            </div>
+            <div class="box-info box-info--last">
+              <div>
+                <small class="field-label">Traveller</small>
+                <select name="Traveller" class="field-input">
+                  <option value="1">1 Passenger</option>
+                  <option value="2">2 Passenger</option>
+                  <option value="3">3 Passenger</option>
+                </select>
+              </div>
+              <span class="edit-btn">✏️</span>
+            </div>
+          </div>
+
+          <!-- CARD: CREDIT CARDS -->
+          <div class="section-card">
+            <div class="payment-logos">
+              <img src="resource/mayment card.png">
+            </div>
+            <div class="cc-grid">
+              <div class="cc-visual"><img src="resource/card 1.png" class="cc-img"></div>
+              <div class="cc-visual"><img src="resource/card 2.png" class="cc-img"></div>
+            </div>
+            <div class="form-stack">
+              <div>
+                <label class="form-label">Card Number</label>
+                <div class="form-input form-input--row">
+                  <input type="text" id="ccnum" placeholder="1111-2222-3333-4444" class="input-bare" maxlength="19">
+                  <span class="input-check" id="checkMark">✔</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-col">
+                  <label class="form-label">Expiry Date</label>
+                  <input type="text" class="form-input" placeholder="MM / YY" maxlength="7">
+                </div>
+                <div class="form-col">
+                  <label class="form-label">CVC/CVV</label>
+                  <input type="password" class="form-input" placeholder="••••" maxlength="4">
+                </div>
+              </div>
+              <label class="save-card-label">
+                <input type="checkbox" checked class="save-card-checkbox"> Save Card
+              </label>
+            </div>
+          </div>
+
+          <button class="btn-pay">Confirm and reserve</button>
+        </div>
+
+        <!-- CỘT PHẢI -->
+        <div class="dskt-col-right">
+          <div class="section-card">
+            <h3 class="hotel-name">Switzerland Hotels and Places to Stay</h3>
+            <div class="hotel-rating">
+              <span class="star">★</span>
+              <span class="rating-score">4.8</span>
+              <span class="rating-count">(122 reviews)</span>
+            </div>
+            <div class="h-img-m"></div>
+            <p class="hotel-rooms">1 bedroom + 1 private room</p>
+            <div class="hotel-dates">
+              <div>
+                <div class="hotel-date-label">Check in</div>
+                <b class="hotel-date-val" id="checkinText">June 27, 2020</b>
+              </div>
+              <div>
+                <div class="hotel-date-label">Check out</div>
+                <b class="hotel-date-val" id="checkoutText">June 30, 2020</b>
+              </div>
+            </div>
+            <div class="hotel-guests">
+              <span class="hotel-guests-label">Guest</span> &nbsp; <span id="guestText">2 guests</span>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <div class="section-title">Booked details</div>
+            <div class="detail-row"><span>$19 × 5 nights</span><span class="detail-val--bold">$833</span></div>
+            <div class="detail-row"><span>Occupancy text and fee</span><span class="detail-val--red">-$125</span></div>
+            <div class="detail-row"><span>Service fee</span><span class="detail-val--bold">$103</span></div>
+            <div class="detail-row detail-total">
+              <span>Total</span><span class="detail-total-price">$833</span>
+            </div>
+            <div class="report-link-wrap">
+              <span class="report-link">Report this property</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROMO BANNER -->
+      <div class="promo-banner">
+        <div>
+          <h2 class="promo-title">Get our pro offers</h2>
+          <p class="promo-desc">Create a visual identity for your brand</p>
+        </div>
+        <div class="promo-form">
+          <div class="promo-input-wrap">
+            <input type="text" placeholder="Type your email here" class="promo-input">
+            <button class="promo-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER DESKTOP -->
+      <div class="footer-full">
+        <div>
+          <div class="footer-brand"><img src="resource/logo.png"></div>
+          <p class="footer-desc">This is the team that specializes in making sure your interior looks cool</p>
+          <div class="theme-toggle" id="themeToggle">
+            <div class="toggle-circle"></div>
+            <span class="icon sun">☀</span>
+            <span class="icon moon">☾</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <p class="footer-link">Travel Booking</p>
+          <p class="footer-link">Flight Booking</p>
+          <p class="footer-link">Car Booking</p>
+          <p class="footer-link">Fivestar Hotel</p>
+          <p class="footer-link">Traveling</p>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <p class="footer-link">Account</p>
+          <p class="footer-link">Legal</p>
+          <p class="footer-link">Contact</p>
+          <p class="footer-link">Terms &amp; Condition</p>
+          <p class="footer-link">Privacy Policy</p>
+        </div>
+        <div class="footer-col">
+          <h4>Business</h4>
+          <p class="footer-link">Success</p>
+          <p class="footer-link">About Locate</p>
+          <p class="footer-link">Blog</p>
+          <p class="footer-link">Information</p>
+          <p class="footer-link">Travel Guide</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== MODAL MOBILE SLIDE (lên trên) ===== -->
+  <div class="overlay overlay--mobile-top" id="mobileOverlay" onclick="closeAll()">
+    <div class="top-menu-area" onclick="event.stopPropagation()">
+      <button class="drop-btn">Mở bằng ▾</button>
+      <div class="drop-content">
+        <p class="drop-hint">Ứng dụng đề xuất</p>
+        <div class="drop-item">📄 DocHub - PDF Sign</div>
+        <div class="drop-item">☁️ CloudConvert</div>
+        <div class="drop-item">✚ Kết nối ứng dụng khác</div>
+      </div>
+    </div>
+
+    <div class="modal-mobile-tall" onclick="event.stopPropagation()">
+
+      <!-- HEADER MOBILE — copy y hệt desktop header -->
+      <div class="m-header">
+        <div class="header-logo"><img src="resource/logo.png"></div>
+        <div class="header-right">
+          <span class="header-flag">USD</span>
+          <span class="header-flag"><img src="resource/united-states.png"></span>
+          <span class="header-flag">
+            <div class="bell-wrapper">
+              <div class="footer-bell">
+                <img src="resource/bell.png" style="width:18px;height:18px;">
+                <span class="bell-badge">1</span>
+              </div>
+            </div>
+          </span>
+          <img class="header-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVfHORQFLyUf_rNove-xUmxIskDeMJ63REz_YIMQ6S0vCyQdkBvJos4igKspvCgpqnpy8h0xM--1uckzZIxDgyoHy37-MowkF-YzvVx8&s=10" alt="avatar">
+          <button class="btn-exit" onclick="closeAll()">× Thoát</button>
+        </div>
+      </div>
+
+      <!-- BREADCRUMB MOBILE -->
+      <div class="m-breadcrumb">
+        Home <span class="sep">›</span>
+        Hotel list <span class="sep">›</span>
+        Hotel details <span class="sep">›</span>
+        <span class="m-breadcrumb__active">Confirm and pay</span>
+      </div>
+
+      <div class="m-content">
+        <h1 class="m-title">Confirm your Book</h1>
+
+        <!-- CARD: YOUR TOUR -->
+        <div class="section-card section-card--mb">
+          <div class="section-title section-title--sm">Your tour</div>
+          <div class="box-info box-info--sm">
+            <div>
+              <small class="field-label field-label--xs">Date</small>
+              <b>June 27 – 30, 2020</b>
+            </div>
+            <span class="edit-btn edit-btn--sm">✏️</span>
+          </div>
+          <div class="box-info box-info--sm box-info--last">
+            <div>
+              <small class="field-label field-label--xs">Traveller</small>
+              <b>1 Passenger</b>
+            </div>
+            <span class="edit-btn edit-btn--sm">✏️</span>
+          </div>
+        </div>
+
+        <!-- CARD: HOTEL INFO -->
+        <div class="section-card section-card--mb">
+          <h3 class="hotel-name hotel-name--sm">Switzerland Hotels and Places to Stay</h3>
+          <div class="hotel-rating hotel-rating--sm">
+            <span class="star star--sm">★</span>
+            <span class="rating-score rating-score--sm">4.8</span>
+            <span class="rating-count rating-count--sm">(122 reviews)</span>
+          </div>
+          <div class="h-img-mobile"></div>
+          <p class="hotel-rooms hotel-rooms--sm">1 bedroom + 1 private room</p>
+          <div class="hotel-dates hotel-dates--sm">
+            <div>
+              <div class="hotel-date-label hotel-date-label--sm">Check in</div>
+              <b class="hotel-date-val">June 27, 2020</b>
+            </div>
+            <div>
+              <div class="hotel-date-label hotel-date-label--sm">Check out</div>
+              <b class="hotel-date-val">June 30, 2020</b>
+            </div>
+          </div>
+          <div class="hotel-guests"><span class="hotel-guests-label">Guest</span> &nbsp; 2 guests</div>
+        </div>
+
+        <!-- CARD: BOOKED DETAILS -->
+        <div class="section-card section-card--mb">
+          <div class="section-title section-title--sm">Booked details</div>
+          <div class="detail-row detail-row--sm"><span>$19 × 5 nights</span><span class="detail-val--bold">$833</span></div>
+          <div class="detail-row detail-row--sm"><span>Occupancy text and fee</span><span class="detail-val--red">-$125</span></div>
+          <div class="detail-row detail-row--sm"><span>Service fee</span><span class="detail-val--bold">$103</span></div>
+          <div class="detail-row detail-total detail-total--sm">
+            <span>Total</span><span class="detail-total-price">$833</span>
+          </div>
+          <div class="report-link-wrap report-link-wrap--sm">
+            <span class="report-link">Report this property</span>
+          </div>
+        </div>
+
+        <!-- CARD: CREDIT CARDS -->
+        <div class="section-card section-card--mb">
+          <div class="section-title section-title--sm">Credit Cards</div>
+          <div class="payment-logos payment-logos--sm">
+            <img src="resource/mayment card.png" style="max-height:28px;">
+          </div>
+          <div class="cc-grid" style="margin-bottom:16px;">
+            <div class="cc-visual"><img src="resource/card 1.png" class="cc-img"></div>
+            <div class="cc-visual"><img src="resource/card 2.png" class="cc-img"></div>
+          </div>
+          <div class="form-stack--sm" style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+              <label class="form-label">Card Number</label>
+              <div class="form-input form-input--sm form-input--row">
+                5884 9248 4444 3333 <span class="input-chevron">▾</span>
+              </div>
+            </div>
+            <div class="form-row form-row--sm">
+              <div class="form-col">
+                <label class="form-label">Expiry Date</label>
+                <div class="form-input form-input--sm form-input--placeholder">MM / YY</div>
+              </div>
+              <div class="form-col">
+                <label class="form-label">CVC/CVV</label>
+                <div class="form-input form-input--sm form-input--dots">••••</div>
+              </div>
+            </div>
+            <label class="save-card-label">
+              <input type="checkbox" checked class="save-card-checkbox save-card-checkbox--sm"> Save Card
+            </label>
+          </div>
+        </div>
+
+        <!-- NÚT CONFIRM -->
+        <button class="btn-pay btn-pay--mb">Confirm and reserve</button>
+
+        <!-- PROMO BANNER MOBILE -->
+        <div class="promo-banner--mobile">
+          <h3>Get our pro offers</h3>
+          <p>Create a visual identity for your brand</p>
+          <div class="promo-form--mobile">
+            <input type="text" placeholder="Type your email here" class="promo-input--mobile">
+            <button class="promo-btn--mobile">Subscribe</button>
+          </div>
+        </div>
+
+        <!-- FOOTER MOBILE -->
+        <div class="m-footer">
+          <div class="m-footer-brand">
+            <div class="m-footer-logo-icon">T</div>
+            <b class="m-footer-brand-name">TripGuide</b>
+          </div>
+          <p class="m-footer-desc">This is the team that specialises in making sure your interior looks cool</p>
+          <div class="m-footer-grid">
+            <div class="m-footer-col">
+              <b>Services</b>
+              <p>Travel Booking</p>
+              <p>Flight Booking</p>
+              <p>Car Booking</p>
+              <p>Fivestar Hotel</p>
+              <p>Traveling</p>
+            </div>
+            <div class="m-footer-col">
+              <b>Support</b>
+              <p>Account</p>
+              <p>Legal</p>
+              <p>Contact</p>
+              <p>Terms &amp; Condition</p>
+              <p>Privacy Policy</p>
+            </div>
+            <div class="m-footer-col">
+              <b>Business</b>
+              <p>Success</p>
+              <p>About Locate</p>
+              <p>Blog</p>
+              <p>Information</p>
+              <p>Travel Guide</p>
+            </div>
+          </div>
+          <div class="m-footer-copy">© 2026 TripGuide Inc.</div>
+        </div>
+
+        <div class="m-spacer"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+    function closeAll() {
+      document.querySelectorAll('.overlay').forEach(el => el.classList.remove('active'));
+    }
+    window.onclick = function(event) {
+      if (event.target.classList.contains('overlay')) closeAll();
+    }
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      toggle.classList.toggle("active");
+      document.body.classList.toggle("dark");
+    });
+    const ccInput = document.getElementById('ccnum');
+    const checkMark = document.getElementById('checkMark');
+    ccInput.addEventListener('input', () => {
+      let val = ccInput.value.replace(/\D/g, '').slice(0, 16);
+      ccInput.value = val.match(/.{1,4}/g)?.join('-') || val;
+      checkMark.classList.toggle('valid', val.length === 16);
+    });
+  </script>
+</body>
+</html>
