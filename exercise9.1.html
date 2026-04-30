@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo và cắt giao diện vs Figma</title>
+  <link href="9.1.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <span class="logo-icon"><img src="img/9.1/Ellipse 1.png" alt="logo"></span> Clubweb
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Learn</a></li>
+  </ul>
+  <a class="btn btn-primary nav-btn" href="#">Join Clubwebbers</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#">Features</a>
+  <a href="#">Pricing</a>
+  <a href="#">Learn</a>
+  <a href="#" class="btn btn-primary" style="width:fit-content">Join Clubwebbers</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 class="fu fu1">Get a customized <span class="hl">website</span> for<br>your business and brand.</h1>
+  <p class="fu fu2">You need a brand yes. You need a website. Get someone to create. Relax and Chill</p>
+  <div class="hero-cta fu fu3">
+    <a href="#" class="btn btn-primary">Get started</a>
+    <a href="#" class="btn btn-outline">Get featured</a>
+  </div>
+  <!-- Laptop mockup -->
+  <div class="hero-mockup fu fu4">
+    <div class="mockup-img">
+      <img src="img/9.1/98a236928e53ba3d2a2baf626b8b89bc8b814913.jpg" alt="Website Preview">
+    </div>
+  </div>
+</div>
+<!-- /HERO -->
+
+<!-- SERVICES SECTION -->
+<div class="services-container">
+  <div class="header-inline" style="text-align: center;">
+    <h2 class="sec-title">Let us build a website with your ideas</h2>
+    <p class="sec-sub">Get website developers to create your marketing website and portfolio faster</p>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- Khối màu cam -->
+    <div class="svc-card svc-orange">
+      <img src="img/9.1/SI.png" class="corner-img top-left" alt="icon">
+      <img src="img/9.1/SI.png" class="corner-img top-right" alt="icon">
+      <div class="svc-icon">
+        <img src="img/9.1/Group 168.png" alt="cart">
+      </div>
+      <h3>E-commerce website</h3>
+      <p>Engage a developer to create a customized e-commerce site at low cost</p>
+    </div>
+
+    <!-- Khối màu tím -->
+    <div class="svc-card svc-purple">
+      <div class="svc-icon">
+        <img src="img/9.1/Search.png" alt="Portfolio">
+      </div>
+      <h3>Portfolio website</h3>
+      <p>A portfolio website is a profile website by nature, so this is the place to get a developer</p>
+    </div>
+
+    <!-- Khối màu xanh -->
+    <div class="svc-card svc-blue">
+      <div class="svc-icon">
+        <img src="img/9.1/Card.png" alt="Marketing">
+      </div>
+      <h3>Marketing website</h3>
+      <p>This is a website created with lot of marketing advantage. Do you have one?</p>
+    </div>
+
+  </div>
+</div>
+<!-- /SERVICES -->
+
+<!-- TOOLS SECTION -->
+<div class="section tools-section">
+  <div class="tools-card">
+    <!-- Các logo bay lộn xộn -->
+    <div class="tool-logo tl-1"><img src="img/9.1/Ellipse 10.png" alt="Webflow"></div>
+    <div class="tool-logo tl-2"><img src="img/9.1/Ellipse 13.png" alt="Bubble"></div>
+    <div class="tool-logo tl-3"><img src="img/9.1/Ellipse 16.png" alt="Vue"></div>
+    <div class="tool-logo tl-4"><img src="img/9.1/Group 57.png" alt="React"></div>
+    <div class="tool-logo tl-5"><img src="img/9.1/Ellipse 14.png" alt="JS"></div>
+    <div class="tool-logo tl-6"><img src="img/9.1/Ellipse 15.png" alt="Python"></div>
+    <div class="tool-logo tl-7"><img src="img/9.1/Group 56.png" alt="HTML5"></div>
+    <div class="tool-logo tl-8"><img src="img/9.1/Ellipse 11.png" alt="CSS3"></div>
+
+    <div class="tools-content">
+      <h2>Choose any tool of your choice</h2>
+      <p>Webflow, bubble, vue and react + 5 other development tools for your website</p>
+    </div>
+  </div>
+
+  <hr class="tools-divider">
+</div>
+<!-- /TOOLS -->
+
+<!-- FEATURED DEVELOPERS SECTION -->
+<div class="section">
+  <div class="services-header">
+    <h2 class="sec-title">Featured Developers</h2>
+    <p class="sec-sub">Use our featured developers for your web projects</p>
+  </div>
+
+  <div class="devs-grid">
+    <!-- Dev 1 -->
+    <div class="dev-card">
+      <img src="img/9.1/Rectangle 44.png" class="dev-photo" alt="Agbama">
+      <div class="dev-card-overlay">
+        <div class="dev-name">Agbama Ulimhuka</div>
+        <div class="dev-role">
+          <img src="img/9.1/Ellipse 20 (1).png" class="role-icon" alt=""> Webflow developer
+        </div>
+      </div>
+      <button class="dev-msg-btn"><img src="img/9.1/Vector.png" alt="message"></button>
+    </div>
+
+    <!-- Dev 2 -->
+    <div class="dev-card">
+      <img src="img/9.1/unsplash_3TLl_97HNJo.png" class="dev-photo" alt="Surita">
+      <div class="dev-card-overlay">
+        <div class="dev-name">Surita Patnam</div>
+        <div class="dev-role">
+          <img src="img/9.1/Ellipse 20 (2).png" class="role-icon" alt=""> Bubble developer
+        </div>
+      </div>
+      <button class="dev-msg-btn"><img src="img/9.1/Vector.png" alt="message"></button>
+    </div>
+
+    <!-- Dev 3 -->
+    <div class="dev-card">
+      <img src="img/9.1/unsplash_At__EKm5PGE.png" class="dev-photo" alt="Richard">
+      <div class="dev-card-overlay">
+        <div class="dev-name">Richard Bomaventure</div>
+        <div class="dev-role">
+          <img src="img/9.1/Ellipse 20.png" class="role-icon" alt=""> React.js developer
+        </div>
+      </div>
+      <button class="dev-msg-btn"><img src="img/9.1/Vector.png" alt="message"></button>
+    </div>
+
+    <!-- Dev 4 -->
+    <div class="dev-card">
+      <img src="img/9.1/unsplash_xmSWVeGEnJw.png" class="dev-photo" alt="Elliana">
+      <div class="dev-card-overlay">
+        <div class="dev-name">Elliana James</div>
+        <div class="dev-role">
+          <img src="img/9.1/Ellipse 20 (3).png" class="role-icon" alt=""> Vue.js developer
+        </div>
+      </div>
+      <button class="dev-msg-btn"><img src="img/9.1/Vector.png" alt="message"></button>
+    </div>
+
+    <!-- Dev 5 -->
+    <div class="dev-card">
+      <img src="img/9.1/unsplash_aoEwuEH7YAs.png" class="dev-photo" alt="Richard">
+      <div class="dev-card-overlay">
+        <div class="dev-name">Richard Bomaventure</div>
+        <div class="dev-role">
+          <img src="img/9.1/Ellipse 20.png" class="role-icon" alt=""> React.js developer
+        </div>
+      </div>
+      <button class="dev-msg-btn"><img src="img/9.1/Vector.png" alt="message"></button>
+    </div>
+
+    <!-- Dev 6 -->
+    <div class="dev-card">
+      <img src="img/9.1/unsplash_ZGa9d1a_4tA.png" class="dev-photo" alt="Samuel">
+      <div class="dev-card-overlay">
+        <div class="dev-name">Samuel Oghenakaro</div>
+        <div class="dev-role">
+          <img src="img/9.1/Ellipse 20 (1).png" class="role-icon" alt=""> Webflow developer
+        </div>
+      </div>
+      <button class="dev-msg-btn"><img src="img/9.1/Vector.png" alt="message"></button>
+    </div>
+  </div>
+
+  <div class="get-featured-wrap">
+    <a href="#" class="btn btn-primary">Get featured</a>
+  </div>
+  <hr class="tools-divider">
+</div>
+<!-- /FEATURED DEVELOPERS -->
+
+<!-- TESTIMONIALS SECTION -->
+<div class="section testimonials-wrap">
+  <div class="services-header">
+    <h2 class="sec-title">Message from users</h2>
+    <p class="sec-sub">Read what they say about clubweb, our users have the say</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <!-- Row 1 -->
+    <div class="testi-card">
+      <p class="highlight-text">With clubweb I got a business website within 24hrs. This made a lot of sales while at home I am happy to have found you guys early. Thanks</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_iFgRcqHznqg.png" class="testi-avatar" alt="Adebanjo">
+        <div class="testi-user-name">Adebanjo Oludare</div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p class="highlight-text">I can't dream of a better website development service provider like clubweb. Fast, simple and easy UI. I got a job because of the portfolio website you made for me</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_QS9ZX5UnS14.png" class="testi-avatar" alt="Diana">
+        <div class="testi-user-name">Diana Bartholomeum</div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p class="highlight-text">Thanks to Clubweb, I learnt how to build a website with their team website plan and I got employed as a webflow developer. Thanks</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_X6Uj51n5CE8.png" class="testi-avatar" alt="Simeon">
+        <div class="testi-user-name">Simeon Neto</div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="testi-card">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis, nec at odio eget. Phasellus, adipiscing turpis nibh amet. Risus orci a in adipiscing amet integer.</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_n4KewLKFOZw.png" class="testi-avatar" alt="Victoria">
+        <div class="testi-user-name">Victoria Roberts</div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu ultrices scelerisque quam end phareta. Egestas sem mattis ut elem eget in. Ultrices quis eu.</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_lkMJcGDZLVs.png" class="testi-avatar" alt="Solomon">
+        <div class="testi-user-name">Solomon Esso</div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget sapien volutpat in cras faucibus. Feugiat molestie metus polin. Gravida vel tempus.</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_RoH656UZEgY.png" class="testi-avatar" alt="Human">
+        <div class="testi-user-name">Human Rabbit Club</div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="testi-card">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat molestie metus polin Gravida vel tempus. Phasellus, adipiscing turpis nibh amet.</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_pAtA8xe_iVM.png" class="testi-avatar" alt="Lucas">
+        <div class="testi-user-name">Lucas Anderson</div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu ultrices scelerisque quam end phareta. Egestas sem mattis et.</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_f6HbVnGtNnY.png" class="testi-avatar" alt="Ricardo">
+        <div class="testi-user-name">Ricardo Perreira</div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget sapien volutpat in cras faucibus. Feugiat montuse dolor age.</p>
+      <div class="testi-user">
+        <img src="img/9.1/unsplash_dt60oksDTx8.png" class="testi-avatar" alt="Cherry">
+        <div class="testi-user-name">Cherry Oludare</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /TESTIMONIALS -->
+
+<!-- ENJOY LIFE SECTION -->
+<div class="section" style="padding-bottom:0">
+  <div class="enjoy-full-img">
+    <img src="img/9.1/Rectangle 52.png" alt="Enjoy Life Preview">
+  </div>
+  <hr class="tools-divider">
+</div>
+
+<!-- CTA BANNER -->
+<div class="section" style="margin-top:60px">
+  <div class="cta-banner">
+    <h2>Do you want to be a clubweber?</h2>
+    <p>Be part of an exciting community of website developers</p>
+    <a href="#" class="btn btn-dark">Join clubweb</a>
+  </div>
+  <hr class="tools-divider">
+</div>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <p class="footer-left">Privacy policy</p>
+
+  <div class="footer-social">
+    <a class="social-icon" href="#"><img src="img/9.1/Group 141.png" alt="facebook"></a>
+    <a class="social-icon" href="#"><img src="img/9.1/Group 142.png" alt="twitter"></a>
+    <a class="social-icon" href="#"><img src="img/9.1/Group 144.png" alt="linkedin"></a>
+    <a class="social-icon" href="#"><img src="img/9.1/Group 145.png" alt="instagram"></a>
+  </div>
+
+  <div class="footer-right">Clubwebs</div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const ham = document.querySelector('.hamburger');
+    if (menu && ham && !menu.contains(e.target) && !ham.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.svc-card, .testi-card, .dev-card, .tools-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
