@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập tổng hợp</title>
+    <link href="12.6.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="menu">
+  <h1>🖥️ MENU CHƯƠNG TRÌNH</h1>
+  <button class="menu-item" onclick="chon(1)"><span class="num">1</span> Nhập tên người dùng</button>
+  <button class="menu-item" onclick="chon(2)"><span class="num">2</span> Nhập tuổi người dùng</button>
+  <button class="menu-item" onclick="chon(3)"><span class="num">3</span> In tên và tuổi</button>
+  <button class="menu-item" onclick="chon(4)"><span class="num">4</span> In bảng cửu chương</button>
+  <button class="menu-item" onclick="chon(5)"><span class="num">5</span> Kiểm tra số chẵn / lẻ</button>
+  <button class="menu-item" onclick="chon(6)"><span class="num">6</span> Tính tổng từ 1 đến N</button>
+  <button class="menu-item" onclick="chon(7)"><span class="num">7</span> In các số trong dãy</button>
+  <button class="menu-item" onclick="chon(8)"><span class="num">8</span> Kiểm tra số nguyên tố</button>
+  <button class="menu-item" onclick="chon(9)"><span class="num">9</span> Đảo ngược chuỗi</button>
+  <button class="menu-item exit" onclick="thoat()"><span class="num">10</span> Thoát chương trình</button>
+</div>
+
+<div id="output"></div>
+
+<!-- Custom prompt dialog -->
+<div id="overlay">
+  <div id="dialog">
+    <label id="dlg-label">Nhập giá trị:</label>
+    <input id="dlg-input" type="text">
+    <button onclick="dlgOK()">OK ↵</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="./exercise12.6.js"></script>
+</body>
+</html>
