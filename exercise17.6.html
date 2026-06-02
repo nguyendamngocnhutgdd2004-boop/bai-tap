@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng tính toán đơn giản</title>
+    <link href="17.6.css" rel="stylesheet">
+  </head>
+<body>
+  <div class="calculator-box">
+    <div class="screen" id="screen">0</div>
+ 
+    <div class="grid-container">
+      <!-- Hàng 1: Toán tử -->
+      <button class="btn-op" onclick="pressOp('+')">+</button>
+      <button class="btn-op" onclick="pressOp('-')">-</button>
+      <button class="btn-op" onclick="pressOp('*')">×</button>
+      <button class="btn-op" onclick="pressOp('/')">÷</button>
+ 
+      <!-- Hàng 2 -->
+      <button onclick="pressNum('7')">7</button>
+      <button onclick="pressNum('8')">8</button>
+      <button onclick="pressNum('9')">9</button>
+      <button class="btn-equal" onclick="executeCalc()">=</button>
+ 
+      <!-- Hàng 3 -->
+      <button onclick="pressNum('4')">4</button>
+      <button onclick="pressNum('5')">5</button>
+      <button onclick="pressNum('6')">6</button>
+ 
+      <!-- Hàng 4 -->
+      <button onclick="pressNum('1')">1</button>
+      <button onclick="pressNum('2')">2</button>
+      <button onclick="pressNum('3')">3</button>
+ 
+      <!-- Hàng 5 -->
+      <button onclick="pressNum('0')">0</button>
+      <button onclick="pressNum('.')">.</button>
+      <button onclick="clearAll()">C</button>
+    </div>
+  </div>
+
+<script src="./exercise17.6.js"></script>
+</body>
+</html>
