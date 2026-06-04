@@ -1,0 +1,151 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+      min-height: 100vh;
+    }
+ 
+    .app {
+      width: 100%;
+      max-width: 560px;
+    }
+ 
+    /* Header */
+    .header {
+      background: #e53935;
+      padding: 24px 20px 20px;
+      border-radius: 2px 2px 0 0;
+    }
+ 
+    .header h1 {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+ 
+    .input-row {
+      display: flex;
+      gap: 0;
+    }
+ 
+    .input-row input {
+      flex: 1;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+      border: none;
+      outline: none;
+      border-radius: 0;
+    }
+ 
+    .input-row input::placeholder { color: #aaa; }
+ 
+    .btn-add {
+      padding: 10px 20px;
+      background: #bdbdbd;
+      color: #fff;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+ 
+    .btn-add:hover { background: #9e9e9e; }
+ 
+    /* List */
+    .todo-list {
+      list-style: none;
+      background: #fff;
+    }
+ 
+    .todo-item {
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid #ececec;
+      gap: 10px;
+      transition: background 0.15s;
+    }
+ 
+    .todo-item:last-child { border-bottom: none; }
+ 
+    .todo-item.done {
+      background: #9e9e9e;
+    }
+ 
+    /* Checkbox dấu tick */
+    .tick {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      user-select: none;
+    }
+ 
+    .todo-item:not(.done) .tick { color: transparent; }
+ 
+    /* Text */
+    .todo-text {
+      flex: 1;
+      font-size: 0.95rem;
+      color: #333;
+      cursor: pointer;
+      word-break: break-word;
+    }
+ 
+    .todo-item.done .todo-text {
+      text-decoration: line-through;
+      color: #fff;
+    }
+ 
+    /* Edit input */
+    .edit-input {
+      flex: 1;
+      padding: 4px 8px;
+      font-size: 0.95rem;
+      border: 1px solid #ccc;
+      outline: none;
+      border-radius: 2px;
+    }
+ 
+    /* Action buttons */
+    .actions {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+ 
+    .btn-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 3px;
+      transition: background 0.15s;
+      color: #555;
+    }
+ 
+    .todo-item.done .btn-icon { color: #ddd; }
+ 
+    .btn-icon:hover { background: rgba(0,0,0,0.08); }
+ 
+    .btn-save  { color: #27ae60; font-weight: 600; }
+    .btn-cancel{ color: #888; }
+    .btn-edit  { color: #4a90e2; }
+    .btn-del   { color: #e53935; }
+ 
+    /* Zebra for undone rows */
+    .todo-item:not(.done):nth-child(even) { background: #f7f7f7; }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Quản lý sinh viên</title>
+    <link href="18.5.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+    <header class="header">
+      <h1>Quản lý danh sách sinh viên</h1>
+    </header>
+ 
+    <section class="form-section">
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="inp-ten">Tên sinh viên</label>
+          <input type="text" id="inp-ten" placeholder="Nhập tên..." />
+        </div>
+        <div class="input-group">
+          <label for="inp-tuoi">Tuổi</label>
+          <input type="number" id="inp-tuoi" placeholder="Nhập tuổi..." min="1" max="99" />
+        </div>
+        <div class="input-group">
+          <label for="inp-lop">Lớp</label>
+          <input type="text" id="inp-lop" placeholder="Nhập lớp..." />
+        </div>
+        <div class="input-group btn-group">
+          <button id="btn-them" class="btn btn-primary">
+            <span class="btn-icon">+</span> Thêm sinh viên
+          </button>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="table-section">
+      <div class="table-toolbar">
+        <div class="search-wrap">
+          <span class="search-icon">&#9906;</span>
+          <input type="text" id="inp-search" placeholder="Tìm kiếm sinh viên theo tên..." />
+        </div>
+        <span class="count-badge" id="count-badge">0 sinh viên</span>
+      </div>
+ 
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Tên</th>
+              <th>Tuổi</th>
+              <th>Lớp</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+ 
+  <div class="toast" id="toast"></div>
+ 
+    <script src="./exercise18.5.js"></script>
+  </body>
+</html>

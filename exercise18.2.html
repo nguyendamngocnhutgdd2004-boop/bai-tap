@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập object tổng hợp</title>
+    <link href="18.2.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Luyện tập Object cơ bản</h1>
+ 
+  <!-- ===== BÀI 1 ===== -->
+  <div class="section">
+    <h2>Bài 1 — Thao tác với mảng products</h2>
+    <table>
+      <thead><tr><th>id</th><th>name</th><th>count</th></tr></thead>
+      <tbody id="productTable"></tbody>
+    </table>
+    <p class="msg" id="searchResult"></p>
+  </div>
+ 
+  <!-- ===== BÀI 2 ===== -->
+  <div class="section">
+    <h2>Bài 2 — Quản lý khóa học (C/R/U/D/E)</h2>
+    <ul class="course-list" id="courseList"></ul>
+    <div class="btn-group">
+      <button class="btn-c" onclick="handleC()">C — Thêm</button>
+      <button class="btn-r" onclick="handleR()">R — Xem</button>
+      <button class="btn-u" onclick="handleU()">U — Sửa</button>
+      <button class="btn-d" onclick="handleD()">D — Xóa</button>
+      <button class="btn-e" onclick="handleE()">E — Thoát</button>
+    </div>
+    <p class="msg" id="courseMsg"></p>
+  </div>
+ 
+    <script src="./exercise18.2.js"></script>
+  </body>
+</html>
