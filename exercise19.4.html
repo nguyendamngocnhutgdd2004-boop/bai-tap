@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo todolist lưu vào storage</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="19.4.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="card">
+  <h1>Todo App</h1>
+ 
+  <div class="input-row">
+    <input type="text" id="todoInput" placeholder="Add your new todo" maxlength="120" />
+    <button class="btn-add" id="addBtn" title="Add todo">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+  </div>
+ 
+  <div class="todo-list" id="todoList"></div>
+ 
+  <div class="footer">
+    <span class="footer-count" id="footerCount">You have 0 pending tasks</span>
+    <button class="btn-clear" id="clearBtn">Clear All</button>
+  </div>
+</div>
+    <script src="./exercise19.4.js"></script>
+  </body>
+</html>

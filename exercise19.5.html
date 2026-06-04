@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo một ứng dụng bookmark trang web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="19.5.css" rel="stylesheet">
+  </head>
+  <body>
+    <button class="btn-open-modal" id="openModalBtn">ADD BOOKMARK</button>
+ 
+  <div class="bookmark-grid" id="bookmarkGrid"></div>
+ 
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        Add Bookmark
+        <button class="modal-close" id="closeModalBtn">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="siteName">Website Name</label>
+          <input type="text" id="siteName" placeholder="" autocomplete="off"/>
+        </div>
+        <div class="form-group">
+          <label for="siteUrl">Website URL</label>
+          <input type="text" id="siteUrl" placeholder="" autocomplete="off"/>
+          <span class="error-msg" id="urlError">Please enter a valid URL (e.g. https://google.com)</span>
+        </div>
+        <button class="btn-save" id="saveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+ 
+    <script src="./exercise19.5.js"></script>
+  </body>
+</html>
